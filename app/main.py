@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+import os
+import logging
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.database import init_db
 from app.auth import routes as auth_routes
@@ -12,6 +14,13 @@ app = FastAPI(
     title="HolaBox API",
     description="Cloud Storage API similar to TeraBox",
     version="1.0.0"
+)
+
+# configure logging to file for unhandled exceptions
+logging.basicConfig(
+    filename=os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'error.log'),
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(name)s: %(message)s'
 )
 
 app.add_middleware(
@@ -32,7 +41,24 @@ app.include_router(admin_routes.router)
 
 @app.on_event("startup")
 def startup_event():
-    init_db()
+    """Initialize DB on startup unless SKIP_DB env var is set.
+
+    This allows running the app without an available database for
+    local testing or CI where DB isn't required.
+    """
+    skip_db = os.environ.get("SKIP_DB", "0").lower() in ("1", "true", "yes")
+    if skip_db:
+        logging.info("SKIP_DB set — skipping database initialization")
+        return
+
+    try:
+        init_db()
+    except Exception:
+        logging.exception("Database initialization failed. Continuing without DB because SKIP_DB is not set.")
+
+
+from fastapi.responses import JSONResponse
+from fastapi.requests import Request
 
 
 @app.get("/")
@@ -47,3 +73,9 @@ def read_root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logging.exception("Unhandled exception during request: %s", exc)
+    return JSONResponse(status_code=500, content={"detail": "Internal Server Error"})
