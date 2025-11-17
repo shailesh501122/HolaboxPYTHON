@@ -1,0 +1,154 @@
+I want you to generate a complete production-grade Python backend for my app called **HolaBox**, which is similar to **TeraBox** (cloud storage app).
+
+Build this entire backend using only **Python + FastAPI**.
+
+Use the folder structure and functionality below and generate all backend code, models, routes, services, database config, and helper utilities.
+
+========================================================
+                🚀 PROJECT REQUIREMENTS
+========================================================
+
+📌 **Tech Stack**
+- Python 3.x
+- FastAPI
+- SQLAlchemy ORM
+- PostgreSQL (preferred) or SQLite fallback
+- JWT Authentication
+- Multipart file upload
+- Background tasks for large uploads
+- Async implementation everywhere
+- MinIO or Local Storage folder for file storage
+- Redis (optional) for caching & rate limits
+
+========================================================
+               🚀 CORE FEATURES LIKE TERABOX
+========================================================
+
+# 1️⃣ User Authentication (JWT)
+- Register
+- Login
+- Logout
+- Forgot password
+- Verify email
+- Refresh token system
+- Account settings update
+
+# 2️⃣ Cloud Storage Features
+- Upload files (any size)
+- Resume upload support
+- Create folders
+- Rename file/folder
+- Move file/folder
+- Delete (soft delete)
+- Restore from trash
+- Permanently delete after 30 days
+- File preview URL
+- Video streaming endpoint
+- Image thumbnail generation
+- Download file endpoint
+
+# 3️⃣ File Storage System
+- Store files in `/storage/{userId}/`
+- Keep metadata in database
+- Show used storage vs plan limit
+- Auto-block upload if storage is full
+
+# 4️⃣ Sharing System
+- Generate public share link
+- Optional password protection
+- View/download count
+- Expiry link options (24h, 7d, 30d)
+
+# 5️⃣ Premium Subscription System
+Plans:
+- Free: 20 GB
+- Premium: 1 TB
+- Ultra: 2 TB
+
+Include:
+- Plan upgrades
+- Payment simulation API
+- Storage limit enforcement
+
+# 6️⃣ Analytics
+- Track last login
+- Track total uploads
+- Track active devices
+- Track file views & downloads
+
+# 7️⃣ Admin Panel (API only)
+- Manage all users
+- Reset storage
+- Remove files
+- Check server usage
+- Suspend/unsuspend users
+
+========================================================
+              🚀 PROJECT STRUCTURE (Mandatory)
+========================================================
+
+Use the following folder structure:
+
+holabox-backend/
+│── app/
+│   ├── main.py
+│   ├── config/
+│   │   └── database.py
+│   │   └── settings.py
+│   ├── auth/
+│   │   ├── routes.py
+│   │   ├── jwt_handler.py
+│   │   └── hashing.py
+│   ├── users/
+│   │   ├── routes.py
+│   │   ├── models.py
+│   │   └── service.py
+│   ├── storage/
+│   │   ├── routes.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── sharing/
+│   │   ├── routes.py
+│   │   ├── models.py
+│   │   └── service.py
+│   ├── premium/
+│   │   ├── routes.py
+│   │   ├── models.py
+│   │   └── service.py
+│   ├── admin/
+│   │   ├── routes.py
+│   ├── common/
+│   │   ├── models.py
+│   │   ├── helpers.py
+│   │   └── storage_engine.py
+│   └── schemas/
+│       ├── user_schema.py
+│       ├── file_schema.py
+│       ├── auth_schema.py
+│       └── share_schema.py
+│── storage/
+│── requirements.txt
+│── README.md
+
+========================================================
+            🚀 OUTPUT FORMAT REQUIRED
+========================================================
+- Generate **full working code** for all files
+- Auto-create missing folders
+- Generate database tables
+- Include all import statements
+- Provide working API endpoints with examples
+- Provide test user accounts
+- Include instructions for:
+      - Running the server
+      - Setting environment variables
+      - Database migrations
+      - File storage config
+- Final output must be a **fully functional backend**
+
+========================================================
+           🚀 PROJECT NAME:
+           ***HOLABOX (Python Backend)***
+========================================================
+
+Generate the complete project now.
