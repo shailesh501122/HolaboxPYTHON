@@ -1,5 +1,6 @@
 # HolaBox - Cloud Storage API
-
+Author - Shailesh Singh
+Email-shailesh501122@gmail.com
 A production-grade cloud storage backend built with Python and FastAPI, similar to TeraBox. This backend provides complete file management, user authentication, sharing capabilities, and premium subscription features.
 
 ## 🚀 Features
