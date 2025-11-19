@@ -10,16 +10,4 @@ pydantic==2.5.0
 pydantic-settings==2.1.0
 python-dotenv==1.0.0
 PyJWT==2.8.0
-aiofiles
-fastapi
-passlib[bcrypt]
-psycopg2-binary
-pydantic
-pydantic-settings
-PyJWT
-python-dotenv
-python-jose[cryptography]
-python-multipart
-sqlalchemy
-uvicorn[standard]
-email-validator
+email-validator==2.0.0.post2
